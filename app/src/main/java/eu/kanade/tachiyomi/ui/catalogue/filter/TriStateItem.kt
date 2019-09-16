@@ -1,6 +1,6 @@
 package eu.kanade.tachiyomi.ui.catalogue.filter
 
-import android.support.design.R
+//import android.support.design.R
 import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
 import android.view.View
 import android.widget.CheckedTextView
@@ -37,7 +37,7 @@ open class TriStateItem(val filter: Filter.TriState) : AbstractFlexibleItem<TriS
             else -> throw Exception("Unknown state")
         }, null)?.apply {
             val color = if (filter.state == Filter.TriState.STATE_INCLUDE)
-                R.attr.colorAccent
+                TR.attr.colorAccent
             else
                 android.R.attr.textColorSecondary
 

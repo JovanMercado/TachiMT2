@@ -2,8 +2,8 @@ package eu.kanade.tachiyomi.widget
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.support.design.R
-import android.support.design.internal.ScrimInsetsFrameLayout
+//import android.support.design.R
+//import android.support.design.internal.ScrimInsetsFrameLayout
 import com.google.android.material.textfield.TextInputLayout
 import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,6 +13,7 @@ import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import com.google.android.material.internal.ScrimInsetsFrameLayout
 import eu.kanade.tachiyomi.util.inflate
 import eu.kanade.tachiyomi.R as TR
 
@@ -37,22 +38,22 @@ open class SimpleNavigationView @JvmOverloads constructor(
     init {
         // Custom attributes
         val a = TintTypedArray.obtainStyledAttributes(context, attrs,
-                R.styleable.NavigationView, defStyleAttr,
-                R.style.Widget_Design_NavigationView)
+                TR.styleable.NavigationView, defStyleAttr,
+                TR.style.Widget_Design_NavigationView)
 
         ViewCompat.setBackground(
-                this, a.getDrawable(R.styleable.NavigationView_android_background))
+                this, a.getDrawable(TR.styleable.NavigationView_android_background))
 
-        if (a.hasValue(R.styleable.NavigationView_elevation)) {
+        if (a.hasValue(TR.styleable.NavigationView_elevation)) {
             ViewCompat.setElevation(this, a.getDimensionPixelSize(
-                    R.styleable.NavigationView_elevation, 0).toFloat())
+                    TR.styleable.NavigationView_elevation, 0).toFloat())
         }
 
         @Suppress("DEPRECATION")
         ViewCompat.setFitsSystemWindows(this,
-                a.getBoolean(R.styleable.NavigationView_android_fitsSystemWindows, false))
+                a.getBoolean(TR.styleable.NavigationView_android_fitsSystemWindows, false))
 
-        maxWidth = a.getDimensionPixelSize(R.styleable.NavigationView_android_maxWidth, 0)
+        maxWidth = a.getDimensionPixelSize(TR.styleable.NavigationView_android_maxWidth, 0)
 
         a.recycle()
 
@@ -83,7 +84,7 @@ open class SimpleNavigationView @JvmOverloads constructor(
      * Separator view holder.
      */
     class SeparatorHolder(parent: ViewGroup)
-        : Holder(parent.inflate(R.layout.design_navigation_item_separator))
+        : Holder(parent.inflate(TR.layout.design_navigation_item_separator))
 
     /**
      * Header view holder.

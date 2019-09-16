@@ -140,13 +140,13 @@ open class BrowseCatalogueController(bundle: Bundle) :
         this.navView = navView
         navView.setFilters(presenter.filterItems)
 
-        drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED, Gravity.END)
+        //drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED, Gravity.END)
 
         navView.onSearchClicked = {
             val allDefault = presenter.sourceFilters == presenter.source.getFilterList()
             showProgressBar()
             adapter?.clear()
-            drawer.closeDrawer(Gravity.END)
+            //drawer.closeDrawer(Gravity.END)
             presenter.setSourceFilter(if (allDefault) FilterList() else presenter.sourceFilters)
         }
 
@@ -205,7 +205,7 @@ open class BrowseCatalogueController(bundle: Bundle) :
         catalogue_view.addView(recycler, 1)
 
         if (oldPosition != RecyclerView.NO_POSITION) {
-            recycler.layoutManager.scrollToPosition(oldPosition)
+            recycler.layoutManager?.scrollToPosition(oldPosition)
         }
         this.recycler = recycler
     }
@@ -276,7 +276,7 @@ open class BrowseCatalogueController(bundle: Bundle) :
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_display_mode -> swapDisplayMode()
-            R.id.action_set_filter -> navView?.let { activity?.drawer?.openDrawer(Gravity.END) }
+            //R.id.action_set_filter -> navView.let { activity?.drawer?.openDrawer(Gravity.END) }
             R.id.action_open_in_browser -> openInBrowser()
             R.id.action_open_in_web_view -> openInWebView()
             else -> return super.onOptionsItemSelected(item)

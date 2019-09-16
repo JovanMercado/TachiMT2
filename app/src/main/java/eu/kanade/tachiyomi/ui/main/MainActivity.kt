@@ -72,10 +72,31 @@ class MainActivity : BaseActivity() {
         drawerArrow?.color = Color.WHITE
         toolbar.navigationIcon = drawerArrow
 
+        bottom_navigation.setOnNavigationItemSelectedListener { item ->
+            val id = item.itemId
+
+            val currentRoot = router.backstack.firstOrNull()
+            if (currentRoot?.tag()?.toIntOrNull() != id) {
+                when (id) {
+                    R.id.nav_bottom_library -> setRoot(LibraryController(), id)
+                    R.id.nav_bottom_recent_updates -> setRoot(RecentChaptersController(), id)
+                    R.id.nav_bottom_recently_read -> setRoot(RecentlyReadController(), id)
+                    R.id.nav_bottom_downloads -> {
+                        router.pushController(DownloadController().withFadeTransaction())
+                    }
+                    R.id.nav_bottom_settings -> {
+                        router.pushController(SettingsMainController().withFadeTransaction())
+                    }
+                }
+            }
+            true
+        }
+
+
         tabAnimator = TabsAnimator(tabs)
 
         // Set behavior of Navigation drawer
-        nav_view.setNavigationItemSelectedListener { item ->
+        /*nav_view.setNavigationItemSelectedListener { item ->
             val id = item.itemId
 
             val currentRoot = router.backstack.firstOrNull()
@@ -99,7 +120,7 @@ class MainActivity : BaseActivity() {
             }
             drawer.closeDrawer(GravityCompat.START)
             true
-        }
+        } */
 
         val container: ViewGroup = findViewById(R.id.controller_container)
 
@@ -111,13 +132,13 @@ class MainActivity : BaseActivity() {
             }
         }
 
-        toolbar.setNavigationOnClickListener {
+        /* toolbar.setNavigationOnClickListener {
             if (router.backstackSize == 1) {
                 drawer.openDrawer(GravityCompat.START)
             } else {
                 onBackPressed()
             }
-        }
+        } */
 
         router.addChangeListener(object : ControllerChangeHandler.ControllerChangeListener {
             override fun onChangeStarted(to: Controller?, from: Controller?, isPush: Boolean,
@@ -194,15 +215,16 @@ class MainActivity : BaseActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        nav_view?.setNavigationItemSelectedListener(null)
+        bottom_navigation?.setOnNavigationItemSelectedListener(null)
         toolbar?.setNavigationOnClickListener(null)
     }
 
     override fun onBackPressed() {
         val backstackSize = router.backstackSize
-        if (drawer.isDrawerOpen(GravityCompat.START) || drawer.isDrawerOpen(GravityCompat.END)) {
+        /* if (drawer.isDrawerOpen(GravityCompat.START) || drawer.isDrawerOpen(GravityCompat.END)) {
             drawer.closeDrawers()
-        } else if (backstackSize == 1 && router.getControllerWithTag("$startScreenId") == null) {
+        } */
+           if (backstackSize == 1 && router.getControllerWithTag("$startScreenId") == null) {
             setSelectedDrawerItem(startScreenId)
         } else if (backstackSize == 1 || !router.handleBack()) {
             super.onBackPressed()
@@ -211,8 +233,8 @@ class MainActivity : BaseActivity() {
 
     private fun setSelectedDrawerItem(itemId: Int) {
         if (!isFinishing) {
-            nav_view.setCheckedItem(itemId)
-            nav_view.menu.performIdentifierAction(itemId, 0)
+            //nav_view.setCheckedItem(itemId)
+            bottom_navigation.menu.performIdentifierAction(itemId, 0)
         }
     }
 
@@ -225,12 +247,12 @@ class MainActivity : BaseActivity() {
             return
         }
 
-        val showHamburger = router.backstackSize == 1
-        if (showHamburger) {
+        /*val showHamburger = router.backstackSize == 1
+        /* if (showHamburger) {
             drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
         } else {
             drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
-        }
+        } */
 
         ObjectAnimator.ofFloat(drawerArrow, "progress", if (showHamburger) 0f else 1f).start()
 
@@ -260,7 +282,7 @@ class MainActivity : BaseActivity() {
             appbar.disableElevation()
         } else {
             appbar.enableElevation()
-        }
+        } */
     }
 
     companion object {

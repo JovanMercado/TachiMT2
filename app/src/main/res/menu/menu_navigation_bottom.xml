@@ -4,28 +4,28 @@
            android:checkableBehavior="single">
         <item
             android:checked="true"
-            android:id="@+id/nav_drawer_library"
-            android:icon="@drawable/ic_book_black_24dp"
-            android:title="@string/label_library" />
+            android:id="@+id/nav_bottom_library"
+            android:icon="@drawable/book_shelf_48px"
+            android:title="@string/label_library"/>
         <item
-            android:id="@+id/nav_drawer_recent_updates"
-            android:icon="@drawable/ic_update_black_24dp"
-            android:title="@string/label_recent_updates" />
+            android:id="@+id/nav_bottom_recent_updates"
+            android:icon="@drawable/renew_subscription_48px"
+            android:title="@string/label_recent_updates"/>
         <item
-            android:id="@+id/nav_drawer_recently_read"
-            android:icon="@drawable/ic_glasses_black_24dp"
+            android:id="@+id/nav_bottom_recently_read"
+            android:icon="@drawable/clock_48px"
             android:title="@string/label_recent_manga"/>
         <item
-            android:id="@+id/nav_drawer_downloads"
-            android:icon="@drawable/ic_file_download_black_24dp"
+            android:id="@+id/nav_bottom_downloads"
+            android:icon="@drawable/download_48px"
             android:title="@string/label_download_queue"
-            android:checkable="false" />
+            android:checkable="false"/>
     </group>
     <group android:id="@+id/group_settings"
            android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_drawer_settings"
-            android:icon="@drawable/ic_settings_black_24dp"
+            android:id="@+id/nav_bottom_settings"
+            android:icon="@drawable/settings_48px"
             android:title="@string/label_settings"
             android:checkable="false" />
     </group>

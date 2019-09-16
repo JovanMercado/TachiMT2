@@ -1,13 +1,11 @@
 package eu.kanade.tachiyomi.util
 
-import kotlinx.coroutines.experimental.CoroutineScope
-import kotlinx.coroutines.experimental.CoroutineStart
-import kotlinx.coroutines.experimental.Job
-import kotlinx.coroutines.experimental.android.UI
-import kotlinx.coroutines.experimental.launch
+import android.provider.Contacts
+import kotlinx.coroutines.*
 
 fun launchUI(block: suspend CoroutineScope.() -> Unit): Job =
-        launch(UI, CoroutineStart.DEFAULT, null, block)
+        GlobalScope.launch(Dispatchers.Main, CoroutineStart.DEFAULT, block)
 
 fun launchNow(block: suspend CoroutineScope.() -> Unit): Job =
-        launch(UI, CoroutineStart.UNDISPATCHED, null, block)
+        GlobalScope.launch(Dispatchers.Main, CoroutineStart.UNDISPATCHED,block)
+

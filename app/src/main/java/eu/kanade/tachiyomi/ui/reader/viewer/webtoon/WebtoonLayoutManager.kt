@@ -5,7 +5,6 @@ package androidx.appcompat.widget
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.NO_POSITION
-import androidx.recyclerview.widget.ViewBoundsCheck
 import eu.kanade.tachiyomi.ui.reader.ReaderActivity
 
 /**
@@ -37,9 +36,9 @@ class WebtoonLayoutManager(activity: ReaderActivity) : LinearLayoutManager(activ
     /**
      * Returns the position of the last item whose end side is visible on screen.
      */
-    fun findLastEndVisibleItemPosition(): Int {
+    /*fun findLastEndVisibleItemPosition(): Int {
         ensureLayoutState()
-        @ViewBoundsCheck.ViewBounds val preferredBoundsFlag =
+        ViewBoundsCheck.ViewBounds val preferredBoundsFlag =
                 (ViewBoundsCheck.FLAG_CVE_LT_PVE or ViewBoundsCheck.FLAG_CVE_EQ_PVE)
 
         val fromIndex = childCount - 1
@@ -53,6 +52,6 @@ class WebtoonLayoutManager(activity: ReaderActivity) : LinearLayoutManager(activ
                 .findOneViewWithinBoundFlags(fromIndex, toIndex, preferredBoundsFlag, 0)
 
         return if (child == null) NO_POSITION else getPosition(child)
-    }
+    }*/
 
 }

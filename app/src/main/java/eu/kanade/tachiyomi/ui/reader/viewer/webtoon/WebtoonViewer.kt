@@ -67,8 +67,8 @@ class WebtoonViewer(val activity: ReaderActivity) : BaseViewer {
         recycler.layoutManager = layoutManager
         recycler.adapter = adapter
         recycler.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
-                val position = layoutManager.findLastEndVisibleItemPosition()
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                val position = layoutManager.findLastVisibleItemPosition()
                 val item = adapter.items.getOrNull(position)
                 if (item != null && currentPage != item) {
                     currentPage = item
@@ -97,7 +97,7 @@ class WebtoonViewer(val activity: ReaderActivity) : BaseViewer {
         }
         recycler.longTapListener = f@ { event ->
             if (activity.menuVisible || config.longTapEnabled) {
-                val child = recycler.findChildViewUnder(event.x, event.y)
+                val child = recycler.findChildViewUnder(event.x, event.y)!!
                 val position = recycler.getChildAdapterPosition(child)
                 val item = adapter.items.getOrNull(position)
                 if (item is ReaderPage) {

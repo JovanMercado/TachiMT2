@@ -3,6 +3,7 @@ package eu.kanade.tachiyomi.ui.catalogue.browse
 import android.content.Context
 import android.util.AttributeSet
 import android.view.ViewGroup
+import androidx.core.graphics.drawable.DrawableCompat.inflate
 import eu.davidea.flexibleadapter.FlexibleAdapter
 import eu.davidea.flexibleadapter.items.IFlexible
 import eu.kanade.tachiyomi.R

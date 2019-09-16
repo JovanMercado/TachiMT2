@@ -1,11 +1,12 @@
 package eu.kanade.tachiyomi.ui.catalogue.filter
 
 import android.annotation.SuppressLint
-import android.support.design.R
+//import android.support.design.R
 import android.view.View
 import eu.davidea.flexibleadapter.FlexibleAdapter
 import eu.davidea.flexibleadapter.items.AbstractHeaderItem
 import eu.davidea.viewholders.FlexibleViewHolder
+import eu.kanade.tachiyomi.R
 import eu.kanade.tachiyomi.source.model.Filter
 
 class SeparatorItem(val filter: Filter.Separator) : AbstractHeaderItem<SeparatorItem.Holder>() {
